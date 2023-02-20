@@ -46,6 +46,9 @@ GitHub Actions allows you to build your app on macOS, Windows and Linux without 
              # If the commit is tagged with a version (e.g. "v1.0.0"),
              # release the app after building
              release: ${{ startsWith(github.ref, 'refs/tags/v') }}
+
+             # if you need DEBUG=electron-builder
+             debugElectron: true
    ```
 
 ## Usage

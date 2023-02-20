@@ -3,6 +3,9 @@ author: Samuel Meuli
 description: GitHub Action for building and releasing Electron apps
 
 inputs:
+  debugElectron:
+    description: debugElectron sets the environment variable DEBUG=electron-builder
+    required: false
   github_token:
     description: GitHub authentication token
     required: true
