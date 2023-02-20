@@ -1,6 +1,13 @@
-const { execSync } = require("child_process");
-const { existsSync, readFileSync } = require("fs");
-const { join } = require("path");
+const {
+	execSync
+} = require("child_process");
+const {
+	existsSync,
+	readFileSync
+} = require("fs");
+const {
+	join
+} = require("path");
 
 /**
  * Logs to the console
@@ -18,7 +25,11 @@ const exit = (msg) => {
 /**
  * Executes the provided shell command and redirects stdout/stderr to the console
  */
-const run = (cmd, cwd) => execSync(cmd, { encoding: "utf8", stdio: "inherit", cwd });
+const run = (cmd, cwd) => execSync(cmd, {
+	encoding: "utf8",
+	stdio: "inherit",
+	cwd
+});
 
 /**
  * Determines the current operating system (one of ["mac", "windows", "linux"])
@@ -104,6 +115,10 @@ const runAction = () => {
 
 	// Disable console advertisements during install phase
 	setEnv("ADBLOCK", true);
+
+	// Enable Electron Debug
+	setEnv("DEBUG", "electron-builder");
+
 
 	log(`Installing dependencies using ${useNpm ? "NPM" : "Yarn"}…`);
 	run(useNpm ? "npm install" : "yarn", pkgRoot);
