@@ -76,6 +76,7 @@ const getInput = (name, required) => {
  */
 const runAction = () => {
 	const platform = getPlatform();
+	const debugElectron = getInput("debugElectron", true) === "true";
 	const release = getInput("release", true) === "true";
 	const pkgRoot = getInput("package_root", true);
 	const buildScriptName = getInput("build_script_name", true);
@@ -117,7 +118,11 @@ const runAction = () => {
 	setEnv("ADBLOCK", true);
 
 	// Enable Electron Debug
-	setEnv("DEBUG", "electron-builder");
+	if (debugElectron) {
+		log("Settings electron-builder Debug Env variable");
+		setEnv("DEBUG", "electron-builder");
+	}
+
 
 
 	log(`Installing dependencies using ${useNpm ? "NPM" : "Yarn"}…`);
